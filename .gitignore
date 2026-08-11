@@ -1,0 +1,9 @@
+#Sensitive Data
+data/processed
+data/raw
+.DS_Store
+
+#Data Documents
+docs/wvs7_codebook.pdf
+docs/521_metadata.pdf
+docs/Violence Against Women.xmind
