@@ -8,8 +8,8 @@ A cross-country data visualization exploring the association between **attitudes
 
 | Source | Variable |
 |---|---|
-| [World Values Survey, Wave 7](https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp) | Q189 — *"Is it justifiable for a man to beat his wife?"* (1 = never, 10 = always) |
-| [UN Global SDG Database](https://unstats.un.org/sdgs/dataportal) | Indicator 5.2.1 — roportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age | 
+| [World Values Survey, Wave 7](https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp) | Q189 Please tell me for each of the following statements whether you think it can always be justified, never be justified, or something in between, using this card. For a man to beat his wife |
+| [UN Global SDG Database](https://unstats.un.org/sdgs/dataportal) | Indicator 5.2.1 — Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age | 
 
 ## Outputs
 
@@ -43,10 +43,10 @@ violence-against-women/
 ## License & citation
 Data belong to their original providers (WVS Association, UN/WHO). Please cite them directly if you reuse this work.
 
-Haerpfer, C., Inglehart, R., Moreno, A., Welzel, C., Kizilova, K., Diez-Medrano J., M. Lagos, P.
+- Haerpfer, C., Inglehart, R., Moreno, A., Welzel, C., Kizilova, K., Diez-Medrano J., M. Lagos, P.
 Norris, E. Ponarin & B. Puranen (eds.). 2024. World Values Survey: Round Seven – Country-Pooled
 Datafile Version 6.0.0. Madrid, Spain & Vienna, Austria: JD Systems Institute & WVSA Secretariat.
 doi:10.14281/18241.24. https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp
 
-United Nations Statistics Division. 2026. Global SDG Indicators Data Platform. United Nations. 
+- United Nations Statistics Division. 2026. Global SDG Indicators Data Platform. United Nations. 
 Accessed August 10, 2026. https://unstats.un.org/sdgs/dataportal
