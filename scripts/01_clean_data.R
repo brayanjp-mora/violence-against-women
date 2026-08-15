@@ -15,7 +15,7 @@
 
 # Setting up the environment ---------------------------------------------------
 library("pacman")
-p_load(tidyverse, readxl, janitor, here)
+p_load(tidyverse, readxl, janitor, here, countrycode, haven)
 
 
 # Data -------------------------------------------------------------------------
@@ -24,9 +24,9 @@ sdg_goal5_path <- list.files(here("data", "raw", "sdg"),
                               pattern = "data-",
                               full.names = TRUE)
 
-goal5_data <- read_xlsx(sdg_goal5_path, sheet = 2)
+goal5_data <- read_xlsx(sdg_goal5_path, sheet = 2) 
 ## WVS Data --------------------------------------------------------------------
-wvs_path <- list.files(here("data/raw/wvs"), 
+wvs_path <- list.files(here("data", "raw", "wvs"), 
                         pattern = "WVS_", 
                         full.names = TRUE)
 
@@ -34,4 +34,7 @@ wvs_data <- read_rds(wvs_path)
 
 
 # Clean Data ===================================================================
-goal5_data
+## WVS DATA --------------------------------------------------------------------
+wvs_data <- wvs_data |> 
+  clean_names() 
+
