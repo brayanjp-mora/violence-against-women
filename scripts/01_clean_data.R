@@ -38,11 +38,12 @@ wvs_data <- read_rds(wvs_path)
 wvs_data <- wvs_data |> 
   clean_names() 
 
+# construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
   # Drop haven metadata to prevent errors later
   mutate(q189_num = zap_labels(q189)) |> 
-  mutate(
-  # New variable that 
+  # recode to binary: 1 = "never justifiable", 2–10 = any justification
+  mutate( 
     justif = case_when(
       q189_num == 1 ~ 0, 
       between(q189_num, 2, 10) ~ 1,
