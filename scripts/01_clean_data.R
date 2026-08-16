@@ -37,11 +37,13 @@ wvs_data <- read_rds(wvs_path)
 # WVS DATA =====================================================================
 ## Tidying Data ----------------------------------------------------------------
 wvs_data <- wvs_data |> 
-  clean_names() 
+  clean_names() |> 
+  select(b_country_alpha, w_weight, q189)
 
 ## Cleaning Data ---------------------------------------------------------------
-
-
+wvs <- wvs_data |> 
+  # drop NIR 
+  filter()
 ## Construction ----------------------------------------------------------------
 # construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
@@ -54,4 +56,3 @@ wvs_data <- wvs_data |>
       between(q189_num, 2, 10) ~ 1,
       TRUE ~ NA
   )) 
-
