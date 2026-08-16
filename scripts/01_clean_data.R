@@ -42,8 +42,10 @@ wvs_data <- wvs_data |>
 
 ## Cleaning Data ---------------------------------------------------------------
 wvs <- wvs_data |> 
-  # drop NIR 
-  filter()
+  # Drop Northern Ireland (NIR) to prevent overrepresentation bias;
+  # Combining NIR with GBR requires complex, non-standard weight adjustments.
+  filter(b_country_alpha != "NIR")
+
 ## Construction ----------------------------------------------------------------
 # construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
