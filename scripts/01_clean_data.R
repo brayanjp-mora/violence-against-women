@@ -14,8 +14,9 @@
 # ==============================================================================
 
 # Setting up the environment ---------------------------------------------------
+install.packages("pacman")
 library("pacman")
-p_load(tidyverse, readxl, janitor, here, countrycode, haven)
+p_load(tidyverse, readxl, janitor, here, countrycode, haven, srvyr)
 
 
 # Data -------------------------------------------------------------------------
@@ -33,7 +34,7 @@ wvs_path <- list.files(here("data", "raw", "wvs"),
 wvs_data <- read_rds(wvs_path)
 
 
-# Clean Data ===================================================================
+# Tidying Data =================================================================
 ## WVS DATA --------------------------------------------------------------------
 wvs_data <- wvs_data |> 
   clean_names() 
