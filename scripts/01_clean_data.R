@@ -39,6 +39,9 @@ wvs_data <- read_rds(wvs_path)
 wvs_data <- wvs_data |> 
   clean_names() 
 
+# Cleaning Data =================================================================
+## WVS DATA --------------------------------------------------------------------
+
 # construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
   # Drop haven metadata to prevent errors later
