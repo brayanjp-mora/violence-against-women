@@ -41,7 +41,7 @@ wvs_data <- wvs_data |>
   select(b_country_alpha, w_weight, q189)
 
 ## Cleaning Data ---------------------------------------------------------------
-wvs <- wvs_data |> 
+wvs_data <- wvs_data |> 
   # Drop Northern Ireland (NIR) to prevent overrepresentation bias;
   # Combining NIR with GBR requires complex, non-standard weight adjustments.
   filter(b_country_alpha != "NIR")
