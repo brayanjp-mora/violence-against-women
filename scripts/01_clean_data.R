@@ -41,6 +41,8 @@ wvs_data <- wvs_data |>
 
 ## Cleaning Data ---------------------------------------------------------------
 
+
+## Construction ----------------------------------------------------------------
 # construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
   # Drop haven metadata to prevent errors later
