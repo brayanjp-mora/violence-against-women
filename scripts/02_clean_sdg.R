@@ -27,3 +27,11 @@ goal5_data <- goal5_data |>
   clean_names() |> 
   select(indicator, geo_area_code, value, age) |> 
   filter(indicator == "5.2.1")
+
+## Cleaning Data ---------------------------------------------------------------
+goal5_data<- goal5_data |> 
+  # filtering by 15+ matches the open-ended adult age range 
+  # of WVS sample (no upper cap) 
+  filter(age == "15+")
+
+
