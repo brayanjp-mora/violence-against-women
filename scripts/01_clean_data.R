@@ -47,7 +47,7 @@ wvs_data <- wvs_data |>
   filter(b_country_alpha != "NIR")
 
 ## Construction ----------------------------------------------------------------
-# construct the attitude variable from Q189
+### construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
   # Drop haven metadata to prevent errors later
   mutate(q189_num = zap_labels(q189)) |> 
@@ -58,3 +58,14 @@ wvs_data <- wvs_data |>
       between(q189_num, 2, 10) ~ 1,
       TRUE ~ NA
   )) 
+
+### Aggregate to country level ---------------------------------------------------
+wvs_country <- wvs_data |>
+  # drop NA values to avoid missing values survey design errors 
+  # (see construction section)
+  drop_na(justif) |>
+  as_survey_design(weights = w_weight) |>
+  # weighted % who consider wife-beating justifiable, per country
+  group_by(b_country_alpha) |>
+  summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
+  arrange(desc(pct_justif))
