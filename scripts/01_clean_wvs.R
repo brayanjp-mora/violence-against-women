@@ -4,13 +4,14 @@
 #
 # 01_clean_data.R
 #
-# Purpose: Read raw WVS Wave 7 and SDG 5.2.1 data, filter to valid responses,
-#          aggregate WVS to country level, and merge into an analysis-ready
-#          dataset.
+# Purpose: Read raw WVS Wave 7, filter to valid responses, 
+#          calulate weighted proportions by sex, and
+#          aggregate WVS to country level.
 #
 # Input:   data/raw/wvs/WVS_*.rds
-#          data/raw/sdg/  (or pulled from the UN SDG API)
-# Output:  data/processed/ipv_country.rds
+# Output:  data/processed/wvs_country
+#          data/processed/wvs_country_male
+#          data/processed/wvs_country_female
 # ==============================================================================
 
 # Setting up the environment ---------------------------------------------------
@@ -20,12 +21,6 @@ p_load(tidyverse, readxl, janitor, here, countrycode, haven, srvyr)
 
 
 # Data -------------------------------------------------------------------------
-## SDG Data --------------------------------------------------------------------
-sdg_goal5_path <- list.files(here("data", "raw", "sdg"), 
-                              pattern = "data-",
-                              full.names = TRUE)
-
-goal5_data <- read_xlsx(sdg_goal5_path, sheet = 2) 
 ## WVS Data --------------------------------------------------------------------
 wvs_path <- list.files(here("data", "raw", "wvs"), 
                         pattern = "WVS_", 
