@@ -38,7 +38,7 @@ wvs_data <- read_rds(wvs_path)
 ## Tidying Data ----------------------------------------------------------------
 wvs_data <- wvs_data |> 
   clean_names() |> 
-  select(b_country_alpha, w_weight, q189)
+  select(b_country_alpha, w_weight, q189, q260)
 
 ## Cleaning Data ---------------------------------------------------------------
 wvs_data <- wvs_data |> 
