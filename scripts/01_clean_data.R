@@ -75,3 +75,27 @@ wvs_country <- wvs_data |>
   group_by(b_country_alpha) |>
   summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
   arrange(desc(pct_justif))
+
+
+### Aggregate by sex ---------------------------------------------------------------
+wvs_country_male <- wvs_data |>
+  filter(q260 == 1) |> 
+  # drop NA values to avoid missing values survey design errors 
+  # (see construction section)
+  drop_na(justif) |>
+  as_survey_design(weights = w_weight) |>
+  # weighted % who consider wife-beating justifiable, per country
+  group_by(b_country_alpha) |>
+  summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
+  arrange(desc(pct_justif))
+
+wvs_country_female <- wvs_data |>
+  filter(q260 == 2) |> 
+  # drop NA values to avoid missing values survey design errors 
+  # (see construction section)
+  drop_na(justif) |>
+  as_survey_design(weights = w_weight) |>
+  # weighted % who consider wife-beating justifiable, per country
+  group_by(b_country_alpha) |>
+  summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
+  arrange(desc(pct_justif))
