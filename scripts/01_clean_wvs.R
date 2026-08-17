@@ -2,7 +2,7 @@
 # Attitudes and prevalence of intimate partner violence
 # Author: Brayan Mora
 #
-# 01_clean_data.R
+# 01_clean_wvs.R
 #
 # Purpose: Read raw WVS Wave 7, filter to valid responses, 
 #          calulate weighted proportions by sex, and
