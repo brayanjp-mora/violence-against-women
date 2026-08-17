@@ -13,12 +13,9 @@
 # ==============================================================================
 
 # Setting up the environment ---------------------------------------------------
-install.packages("pacman")
 library("pacman")
 p_load(tidyverse, readxl, janitor, here, countrycode, haven, srvyr)
 ## SDG Data --------------------------------------------------------------------
 sdg_goal5_path <- list.files(here("data", "raw", "sdg"), 
                               pattern = "data-",
                               full.names = TRUE)
-
-goal5_data <- read_xlsx(sdg_goal5_path, sheet = 2) 
