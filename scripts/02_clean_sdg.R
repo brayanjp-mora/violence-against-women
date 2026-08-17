@@ -19,3 +19,5 @@ p_load(tidyverse, readxl, janitor, here, countrycode, haven, srvyr)
 sdg_goal5_path <- list.files(here("data", "raw", "sdg"), 
                               pattern = "data-",
                               full.names = TRUE)
+
+goal5_data <- read_xlsx(sdg_goal5_path, sheet = 2) 
