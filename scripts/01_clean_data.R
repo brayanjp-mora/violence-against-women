@@ -46,7 +46,13 @@ wvs_data <- wvs_data |>
   # Combining NIR with GBR requires complex, non-standard weight adjustments.
   filter(b_country_alpha != "NIR")
 
+### cleaning sex variable
+wvs_data <- wvs_data |>  
+  # keep only male and female to avoid noise of other responses
+  filter(q260_num %in% c(1,2))
+
 ## Construction ----------------------------------------------------------------
+
 ### construct the attitude variable from Q189
 wvs_data <- wvs_data |> 
   # Drop haven metadata to prevent errors later
