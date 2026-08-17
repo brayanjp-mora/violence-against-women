@@ -49,7 +49,7 @@ wvs_data <- wvs_data |>
 ### cleaning sex variable
 wvs_data <- wvs_data |>  
   # keep only male and female to avoid noise of other responses
-  filter(q260_num %in% c(1,2))
+  filter(q260 %in% c(1,2))
 
 ## Construction ----------------------------------------------------------------
 
