@@ -94,3 +94,12 @@ wvs_country_female <- wvs_data |>
   group_by(b_country_alpha) |>
   summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
   arrange(desc(pct_justif))
+
+# Save Data ====================================================================
+saveRDS(wvs_country, file = here("data", "processed", "wvs_country.rds"))
+saveRDS(wvs_country_male, file = here("data", 
+                                      "processed", 
+                                      "wvs_country_male.rds"))
+saveRDS(wvs_country_female, file = here("data", 
+                                        "processed", 
+                                        "wvs_country_female.rds"))
