@@ -60,7 +60,7 @@ wvs_data <- wvs_data |>
       TRUE ~ NA
   )) 
 
-### Aggregate to country level ---------------------------------------------------
+### Aggregate to country level -------------------------------------------------
 wvs_country <- wvs_data |>
   # drop NA values to avoid missing values survey design errors 
   # (see construction section)
@@ -72,34 +72,21 @@ wvs_country <- wvs_data |>
   arrange(desc(pct_justif))
 
 
-### Aggregate by sex ---------------------------------------------------------------
-wvs_country_male <- wvs_data |>
-  filter(q260 == 1) |> 
+### Aggregate by sex -----------------------------------------------------------
+wvs_country_sex <- wvs_data |>
+  #Convert q260 to a readable sex factor
+  mutate(sex = as_factor(q260)) |> 
   # drop NA values to avoid missing values survey design errors 
   # (see construction section)
   drop_na(justif) |>
   as_survey_design(weights = w_weight) |>
-  # weighted % who consider wife-beating justifiable, per country
-  group_by(b_country_alpha) |>
-  summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
-  arrange(desc(pct_justif))
-
-wvs_country_female <- wvs_data |>
-  filter(q260 == 2) |> 
-  # drop NA values to avoid missing values survey design errors 
-  # (see construction section)
-  drop_na(justif) |>
-  as_survey_design(weights = w_weight) |>
-  # weighted % who consider wife-beating justifiable, per country
-  group_by(b_country_alpha) |>
+  # weighted % who consider wife-beating justifiable, per country, 
+  # and group by sex
+  group_by(b_country_alpha, sex) |>
   summarise(pct_justif = survey_mean(justif, proportion = TRUE) * 100) |> 
   arrange(desc(pct_justif))
 
 # Save Data ====================================================================
 saveRDS(wvs_country, file = here("data", "processed", "wvs_country.rds"))
-saveRDS(wvs_country_male, file = here("data", 
-                                      "processed", 
-                                      "wvs_country_male.rds"))
-saveRDS(wvs_country_female, file = here("data", 
-                                        "processed", 
-                                        "wvs_country_female.rds"))
+saveRDS(wvs_country_sex, file = here("data", "processed", "wvs_country_sex.rds"))
+
