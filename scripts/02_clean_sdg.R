@@ -34,8 +34,11 @@ goal5_data <- goal5_data |>
   # of WVS sample (no upper cap) 
   filter(age == "15+")
 
-goal5_data <- goal5_data |> 
+ sdg_indicator <- goal5_data |> 
   mutate(b_country_alpha = countrycode(
                             geo_area_code, "un", "iso3c",
                             custom_match = c("412" = "XKX"))) |> 
   drop_na(b_country_alpha)
+
+# Save Data --------------------------------------------------------------------
+saveRDS(sdg_indicator, here("data", "processed", "sdg_indicator.rds"))
