@@ -9,7 +9,7 @@
 #          aggregate to country level
 #
 # Input:   data/raw/sdg/ 
-# Output:  data/processed/ipv_country.rds
+# Output:  data/processed/sdg_indicator.rds
 # ==============================================================================
 
 # Setting up the environment ---------------------------------------------------
