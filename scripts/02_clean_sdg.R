@@ -34,11 +34,20 @@ goal5_data <- goal5_data |>
   # of WVS sample (no upper cap) 
   filter(age == "15+")
 
- sdg_indicator <- goal5_data |> 
+## Construction ----------------------------------------------------------------
+goal5_data <- goal5_data |> 
+  mutate(ipv_prevalence_plus15 = as.numeric(value))
+
+ goal5_data <- goal5_data |>   
+  # create b_country_apha as iso3c to match wvs dataset
   mutate(b_country_alpha = countrycode(
                             geo_area_code, "un", "iso3c",
                             custom_match = c("412" = "XKX"))) |> 
   drop_na(b_country_alpha)
 
+## Drop non-essential variables ------------------------------------------------
+sdg_521_ipv <- goal5_data |> 
+  select(-c(age, value, geo_area_code, indicator))
+
 # Save Data --------------------------------------------------------------------
-saveRDS(sdg_indicator, here("data", "processed", "sdg_indicator.rds"))
+saveRDS(sdg_indicator, here("data", "processed", "sdg_521_ipv.rds"))
