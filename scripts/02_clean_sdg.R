@@ -50,4 +50,4 @@ sdg_521_ipv <- goal5_data |>
   select(-c(age, value, geo_area_code, indicator))
 
 # Save Data --------------------------------------------------------------------
-saveRDS(sdg_indicator, here("data", "processed", "sdg_521_ipv.rds"))
+saveRDS(sdg_521_ipv, here("data", "processed", "sdg_521_ipv.rds"))
